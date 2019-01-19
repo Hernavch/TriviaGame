@@ -1,0 +1,23 @@
+body{
+    /* background-image: url("abstract.jpg"); */
+    background: cadetblue;
+    text-align: center;
+   
+}
+
+.box1{
+padding: 50px;
+background-color: rgb(192, 215, 235);
+color:black;
+height: 500px;
+margin:50px;
+    
+}
+#startbtn{
+    position: relative;
+    top:50px;
+    font-size: 30px;
+    width:100%;
+    text-align: center;
+
+}
