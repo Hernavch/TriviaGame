@@ -1,16 +1,16 @@
 var trivia = [
-    {hint:"Here is your question 1" ,
-    answer:"Here is the answer Q1",
-    options:["Here is a possible 1",  "Here is a possible 2"]
+    {hint:"Who was the first woman inducted into the Rock and Roll Hall of Fame?" ,
+    answer:"Aretha Franklin",
+    options:["Janice Joplin",  "Stevie Nixx"]
     },
 
-    {hint:"Here is your question 2" ,
-    answer:"Here is the answer Q2",
-    options:["Here is a possible1.1",  "Here is a possible 1.2"]
+    {hint:"In the film Babe, what type of animal was Babe?" ,
+    answer:"Pig",
+    options:["Horse",  "Dog"]
     },
-    {hint:"Here is your question 3" ,
-    answer:"Here is the answer Q3",
-    options:["Here is a possible2.1",  "Here is a possible2.2"]
+    {hint:"Which planet is the closest to Earth?" ,
+    answer:"Venus",
+    options:["Mars",  "Mercury"]
         }
 
 ];
@@ -25,6 +25,13 @@ var trivia = [
 
 
 $("#startbtn").on("click", function(){
+    var timer = setInterval(timer, 1000);
+        function timer() {
+            var t= new time();
+            $("countdown").html(t.toLocaleTimeString());
+             console.log(timer)
+         }
+
     $(".board").empty();
     $(".board").html();
     
@@ -54,12 +61,5 @@ $("#startbtn").on("click", function(){
                     
                 }            
     });
-    // $(".questions").append('<button class="choosebtn" id="q1">'+ choices + '</button>');
-    // $(".questions").append('<button class="choosebtn">' + trivia[i].answer + '</button>');
-    // }
-   
-    // $(".board").html();
-    // $(".board").empty();
-    // $(".board").html(question1);
-    // $(".question1").append('<p>'+  +'</p>')
+    
 // });
