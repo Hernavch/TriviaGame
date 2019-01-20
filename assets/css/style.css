@@ -27,3 +27,13 @@ margin:50px;
     text-align: center;
 
 }
+.questions{
+    color:black;
+    font-size: 18px;
+    font-stretch: ultra-expanded;
+    font-family: 'Luckiest Guy', cursive;
+}
+.choosebtn{
+    font-size:10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+}
