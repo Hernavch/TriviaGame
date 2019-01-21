@@ -1,4 +1,8 @@
 var trivia = [
+    {hint:"In 2019 who won the NFC championship in Over-time?" ,
+    answer:"LA Rams",
+    options:["New Orleans Saints",  "Dallas Cowboys", "LA Rams"]
+    },
     {hint:"Who was the first woman inducted into the Rock and Roll Hall of Fame?" ,
     answer:"Aretha Franklin",
     options:["Janice Joplin",  "Stevie Nixx", "Aretha Franklin"]
@@ -46,25 +50,36 @@ $("#startbtn").on("click", function(){
      for(var i = 0 ; i < trivia.length ; i ++ ) {
         var question = trivia[i].hint;
         $(".board").append('<div class="questions">' + question + '<div>');
-    console.log(trivia.length);
+    console.log(trivia[i].answer);
 // For loop providing all options excluding answers to show in new div within questions
         // currently looping too many times.
             for (var j = 0; j < trivia[i].options.length; j++) {
                 // console.log(trivia[i].options[j]);
                 var choices = trivia[i].options[j];
                 $(".board").append("<input type='radio' name='question-" + i + "' value='" + trivia[i].options[j] + "''>" + trivia[i].options[j]);
-
+                    
  
-                   if(value === trivia[i].answer){
-                       score++;
-                   }
-                    }
-                };
+             }
+        };
 
+    //// grab answer input from the user 
+    console.log(question.valueOf());
     // Add a button
     $(".done").append('<button type="button" class="btn btn-success complete" id="finished">' + "Completed" + '</button>')
-            
+        
       countdown();   
+
+    //   function stats(){
+    //     if(question.val() === trivia[i].answer){
+    //         score++;
+    //     }else if ('value=' !== trivia[i].answer){
+    //         incorrect++;
+    //     }else{
+    //         unanswered++
+
+    //     }
+    //     updateScore();
+    //   }
 
       $("#finished").on("click", function(){
         finished();
@@ -77,6 +92,7 @@ $("#startbtn").on("click", function(){
         $(".board").html();
         $(".done").empty();
         $(".board").append("Completed");
+        stats();
         function updateScore() {
             $(".board").append('<h2>' + score + '<h2>');
             $(".board").append('<h2>' + incorrect + '<h2>');
@@ -88,4 +104,8 @@ $("#startbtn").on("click", function(){
     }
              
 });
+
+// I still need to have the values match up with the answers. I need to just convert
+// it to a readable format so that i can properly compare the two strings that way it will 
+// give the accurate score. 
 
