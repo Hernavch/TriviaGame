@@ -29,21 +29,26 @@ $("#startbtn").on("click", function(){
     $(".board").html();
     
     var number = 60;
-    function countdown() {   
-           setInterval(countdown, 1000)
-           $(".board").html('<h2>'+ "Time Remaining: " + number + '</h2>');
-           number--;     
-
-        // }
-        //     console.log(number);
-            
-    //   countdown();
+    var intervalId;
+    function countdown() { 
+        clearInterval(intervalId);
+        intervalId = setInterval(countdown, 1000)
+        number--;  
+        $(".countdown").html('<h2>'+ "Time Remaining: " + number + '</h2>');
+        if (number === 0){
+            stop();
+        } 
+        }
+                   
+    function stop(){
+        clearInterval(intervalId);
+    }
 
 // for loop providing all questions and inserting them into the page
      for(var i = 0 ; i < trivia.length ; i ++ ) {
         var question = trivia[i].hint;
         $(".board").append('<div class="questions">' + question + '<div>');
-    
+    console.log(trivia.length);
 // For loop providing all options excluding answers to show in new div within questions
         // currently looping too many times.
             for (var j = 0; j < trivia[i].options.length; j++) {
@@ -55,12 +60,16 @@ $("#startbtn").on("click", function(){
                     // if(trivia[i].options[j]> 2){
                         // $(".choosebtn").empty()
                     }
-                }
+                };
 
-            }
-            console.log(number);
+    // Add a button
+    $(".done").append('<button type="button" class="btn btn-success complete" id="finished">' + "Completed" + '</button>')
             
       countdown();   
-       
+
+      $("#startbtn").on("click", function(event){
+        console.log(event);
+      })
              
 });
+
