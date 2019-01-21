@@ -14,21 +14,17 @@ var trivia = [
         }
 
 ];
-
-// console.log(trivia[0].hint);
-
-
-// if($(this).text() == trivia[i].answer) {
-//     score
-// }
-
-
+// $("#startbtn").on("click", rungame);
+// $("#startbtn").on("click", countdown)
+var score = 0;
+var incorrect = 0;
+var unanswered = 3;
 
 $("#startbtn").on("click", function(){
     $(".board").empty();
     $(".board").html();
     
-    var number = 60;
+    var number = 30;
     var intervalId;
     function countdown() { 
         clearInterval(intervalId);
@@ -37,6 +33,8 @@ $("#startbtn").on("click", function(){
         $(".countdown").html('<h2>'+ "Time Remaining: " + number + '</h2>');
         if (number === 0){
             stop();
+            finished();
+
         } 
         }
                    
@@ -57,8 +55,9 @@ $("#startbtn").on("click", function(){
                 $(".board").append("<input type='radio' name='question-" + i + "' value='" + trivia[i].options[j] + "''>" + trivia[i].options[j]);
 
  
-                    // if(trivia[i].options[j]> 2){
-                        // $(".choosebtn").empty()
+                   if(value === trivia[i].answer){
+                       score++;
+                   }
                     }
                 };
 
@@ -67,9 +66,26 @@ $("#startbtn").on("click", function(){
             
       countdown();   
 
-      $("#startbtn").on("click", function(event){
-        console.log(event);
+      $("#finished").on("click", function(){
+        finished();
       })
+
+      function finished(){
+        $(".board").empty();
+        stop();
+        $(".countdown").empty();
+        $(".board").html();
+        $(".done").empty();
+        $(".board").append("Completed");
+        function updateScore() {
+            $(".board").append('<h2>' + score + '<h2>');
+            $(".board").append('<h2>' + incorrect + '<h2>');
+            $(".board").append('<h2>' + unanswered + '<h2>');
+        }
+
+
+        
+    }
              
 });
 
