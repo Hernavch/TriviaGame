@@ -1,16 +1,16 @@
 var trivia = [
     {hint:"Who was the first woman inducted into the Rock and Roll Hall of Fame?" ,
     answer:"Aretha Franklin",
-    options:["Janice Joplin",  "Stevie Nixx"]
+    options:["Janice Joplin",  "Stevie Nixx", "Aretha Franklin"]
     },
 
     {hint:"In the film Babe, what type of animal was Babe?" ,
     answer:"Pig",
-    options:["Horse",  "Dog"]
+    options:["Horse",  "Dog", "Pig"]
     },
     {hint:"Which planet is the closest to Earth?" ,
     answer:"Venus",
-    options:["Mars",  "Mercury"]
+    options:["Mars",  "Mercury", "Venus"]
         }
 
 ];
@@ -25,41 +25,42 @@ var trivia = [
 
 
 $("#startbtn").on("click", function(){
-    var timer = setInterval(timer, 1000);
-        function timer() {
-            var t= new time();
-            $("countdown").html(t.toLocaleTimeString());
-             console.log(timer)
-         }
-
     $(".board").empty();
     $(".board").html();
     
+    var number = 60;
+    function countdown() {   
+           setInterval(countdown, 1000)
+           $(".board").html('<h2>'+ "Time Remaining: " + number + '</h2>');
+           number--;     
 
-    for(var i = 0 ; i < trivia.length ; i ++ ) {
+        // }
+        //     console.log(number);
+            
+    //   countdown();
+
+// for loop providing all questions and inserting them into the page
+     for(var i = 0 ; i < trivia.length ; i ++ ) {
         var question = trivia[i].hint;
-        // console.log(question);
-        console.log(trivia[i].options.length);
-    
         $(".board").append('<div class="questions">' + question + '<div>');
     
-
+// For loop providing all options excluding answers to show in new div within questions
+        // currently looping too many times.
             for (var j = 0; j < trivia[i].options.length; j++) {
-                console.log(trivia[i].options[j]);
+                // console.log(trivia[i].options[j]);
                 var choices = trivia[i].options[j];
-            //     // var choices1 = trivia[0].options[j];
-            //     // var choices2 = trivia[1].options[j];
-            //     // var choices3 = trivia[2].options[j];
-            //     console.log(choices);
+                $(".board").append("<input type='radio' name='question-" + i + "' value='" + trivia[i].options[j] + "''>" + trivia[i].options[j]);
+
+ 
                     // if(trivia[i].options[j]> 2){
-                        $(".choosebtn").empty()
+                        // $(".choosebtn").empty()
                     }
-                    // $(".questions").append('<button class="choosebtn" id="q1">'+ choices + '</button>');
-                    $(".questions").append('<button class="choosebtn answer" id="answer1">' + trivia[0].answer + '</button>');
-                    $(".questions").append('<button class="choosebtn answer" id="answer2">' + trivia[1].answer + '</button>');
-                    $(".questions").append('<button class="choosebtn answer" id="answer3">' + trivia[2].answer + '</button>');
-                    
-                }            
-    });
-    
-// });
+                }
+
+            }
+            console.log(number);
+            
+      countdown();   
+       
+             
+});
